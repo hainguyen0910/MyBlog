@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+                <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+                <p class="card-text ">{% autoescape off %}{{ post.content|linebreaks  }}{% endautoescape %}
+                </p>
+            </div>
+        </div>
+
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="card-body">
+                <!-- comments -->
+                <h2>{{ comments.count }} comments</h2>
+
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+                    </p>
+                    {% autoescape off %}{{ comment.body }}{% endautoescape %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="card-body">
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="toast-container"></div>
+                <script>
+                    setToast("Successfully","success");
+
+                    function setToast(message,type){
+                        var node = document.createElement("div");
+                        var t = 'toast-' + type;
+                        node.setAttribute('class','toast ' + t);
+                        var t = document.createTextNode(message);
+                        node.appendChild(t);
+                        const container = document.getElementsByClassName("toast-container")[0];
+                        container.appendChild(node);
+                        setTimeout(() => {
+                            container.removeChild(node);
+                        },4000);
+                    }
+                </script>
+                <h3>Leave a comment</h3>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                </form>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <h3>Leave a comment</h3>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
