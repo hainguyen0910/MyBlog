@@ -9,15 +9,16 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
 <body>
-  <form action="#" class="login-form">
+  <form method="post" action="" class="login-form">
+    {% csrf_token %}
     <h1>Sign In</h1>
     <div class="textb">
-      <input type="text" required>
+      <input type="text" name="username" required>
       <div class="placeholder">Username</div>
     </div>
 
     <div class="textb">
-      <input type="password" required>
+      <input type="password" name="password" required>
       <div class="placeholder">Password</div>
       <div class="show-password fas fa-eye-slash"></div>
     </div>
@@ -28,9 +29,9 @@
       Stay signed in
     </div>
 
-    <button class="btn fas fa-arrow-right" disabled></button>
-    <a href="#">Can't Sign in?</a>
-    <a href="#">Create Account</a>
+    <button type="submit" class="btn fas fa-arrow-right" disabled></button>
+<!--    <a href="#">Can't Sign in?</a>-->
+<!--    <a href="#">Create Account</a>-->
   </form>
 
   <script>

@@ -1,22 +1,50 @@
+{% load static %}
+<!--<link rel="stylesheet" href="{% static 'css/base.css' %}">-->
 {% block sidebar %}
-
-<style>
-        .card{
-            box-shadow: 0 16px 48px #E3E7EB;
-        }
-       
-</style>
 
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 float-right ">
-<div class="card my-4">
-        <h5 class="card-header">About Us</h5>
-    <div class="card-body">
-        <p class="card-text"> This is My Blog written based on the instructions of Django Central, using Django Framework. Thanks for coming..!</p>
-        <a href="#"
-           class="btn btn-danger">Know more!</a>
+    <div class="card my-4">
+        <h5 class="card-header">About Me</h5>
+        <div class="card-body">
+            <p class="card-text">Thanks for coming..!</p>
+            <a href="#"
+               class="btn btn-danger" id="btn-open-modal">Know more!</a>
+        </div>
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>About Me</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="content-info">
+                        <div class="fb-avatar-content">
+                            <div class="img-avatar"><img src="{% static 'img/avatar.jpg' %} " width="160" height="160">
+                            </div>
+                            <div class="link-fb">
+                                <a href="#"> Hải Nguyên </a>
+                            </div>
+                        </div>
+                        <div class="info-about-me">
+                            <p> Full name : Nguyễn Hải Nguyên </p>
+                            <p> Birthday : 09/10/1999 </p>
+                            <p> Nationality : Việt Nam </p>
+                            <p> Graduate : Ho Chi Minh University Of Transport </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="icon-github"><a href="https://github.com/hainguyen0910" target="_blank"><img src="{% static 'img/icon_github.png' %} " width="32" height="32"></a></div>
+                    <div class="icon-fb"><a href="https://www.facebook.com/hainguyen.091099" target="_blank"><img src="{% static 'img/icon_fb.png' %} " width="32" height="32"></a></div>
+                    <div class="icon-ytb"><a href="#"><img src="{% static 'img/icon_ytb.png' %} " width="32" height="32"></a></div>
+                    <div class="icon-gmail"><a href="#" ><img src="{% static 'img/icon_gmail.png' %} " width="32" height="32"></a></div>
+            </div>
+
+        </div>
     </div>
-</div>
 </div>
 
 {% endblock sidebar %}

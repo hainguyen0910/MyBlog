@@ -37,22 +37,7 @@
                 {% for message in messages %}
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                 <div class="toast-container"></div>
-                <script>
-                    setToast("Successfully","success");
-
-                    function setToast(message,type){
-                        var node = document.createElement("div");
-                        var t = 'toast-' + type;
-                        node.setAttribute('class','toast ' + t);
-                        var t = document.createTextNode(message);
-                        node.appendChild(t);
-                        const container = document.getElementsByClassName("toast-container")[0];
-                        container.appendChild(node);
-                        setTimeout(() => {
-                            container.removeChild(node);
-                        },4000);
-                    }
-                </script>
+                <script> setToast("Successfully","success")</script>
                 <h3>Leave a comment</h3>
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
