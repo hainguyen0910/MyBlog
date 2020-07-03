@@ -6,8 +6,7 @@
             <div class="card-body">
                 <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
                 <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
-                <p class="card-text ">{% autoescape off %}{{ post.content|linebreaks  }}{% endautoescape %}
-                </p>
+                <p class="card-text ">{% autoescape off %}{{ post.content|linebreaks  }}{% endautoescape %}</p>
             </div>
         </div>
 
@@ -22,9 +21,7 @@
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-              {{ comment.created_on }}
-            </span>
+                        <span class=" text-muted font-weight-normal">{{ comment.created_on }}</span>
                     </p>
                     {% autoescape off %}{{ comment.body }}{% endautoescape %}
                 </div>
@@ -55,7 +52,6 @@
                     <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
                 </form>
                 {% endif %}
-                </form>
             </div>
         </div>
     </div>
